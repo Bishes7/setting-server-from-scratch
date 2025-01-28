@@ -22,6 +22,12 @@ console.log(__dirname);
 
 // Home page Controller
 app.get("/", (req, res) => {
+  // Lets learn to read any text file
+
+  fs.readFile(fileName, "utf-8", (error, data) => {
+    error ? console.log(error) : console.log(data);
+  });
+
   res.sendFile(__dirname + "/src/index.html");
 });
 
@@ -33,6 +39,7 @@ app.get("/register", (req, res) => {
 });
 
 const fileName = "userList.csv";
+
 app.post("/register", (req, res) => {
   const { name, email, password } = req.body;
 
