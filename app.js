@@ -17,19 +17,32 @@ console.log(__dirname);
 //     res.send("<h1>Hello World</h1> <p>This is a coding world</p>");
 // });
 
+// Home page Controller
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/src/index.html");
 });
 
-// To get only json file
-app.get("/get-user", (req, res) => {
-  res.json({
-    fName: "Bishes",
-    lName: "Adhikari",
-  });
+// User Registration Controller
+
+app.get("/register", (req, res) => {
+  res.sendFile(__dirname + "/src/register.html");
 });
 
-app.use(express.static(__dirname + "/src/public"));
+// User Login Controller
+
+app.get("/login", (req, res) => {
+  res.sendFile(__dirname + "/src/login.html");
+});
+
+// To get only json file
+// app.get("/get-user", (req, res) => {
+//   res.json({
+//     fName: "Bishes",
+//     lName: "Adhikari",
+//   });
+// });
+
+app.use(express.static(__dirname + "/src/public")); // to connect the css file
 app.listen(PORT, (error) => {
   error ? console.log(error) : console.log(`http://localhost:${PORT}`);
 });
